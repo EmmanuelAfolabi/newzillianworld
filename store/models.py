@@ -120,7 +120,7 @@ class Receipt(models.Model):
 
 
 class ShippingAddress(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, blank=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     streetaddress = models.CharField(max_length=150, null=True)
     apartmentaddress = models.CharField(max_length=150, null=True)
@@ -134,8 +134,15 @@ class ShippingAddress(models.Model):
 
 
 class Reply(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, related_name='comments')
     name = models.CharField(max_length=500, null=True)
     email = models.EmailField(max_length=500, null=True)
     comment = models.TextField(max_length=100000, null=True)
     date = models.DateField(auto_now_add=True, null=True)
+    active = models.BooleanField(default=False, null=True)
+
+    class Meta:
+        ordering = ['date']
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.comment, self.name)

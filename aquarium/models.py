@@ -139,3 +139,10 @@ class Reply(models.Model):
     email = models.EmailField(max_length=500, null=True)
     comment = models.TextField(max_length=100000, null=True)
     date = models.DateField(auto_now_add=True, null=True)
+    active = models.BooleanField(default=False, null=True)
+
+    class Meta:
+        ordering = ['date']
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.comment, self.name)

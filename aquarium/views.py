@@ -49,15 +49,19 @@ def aquarium_single(request, pk):
         if request.method == 'POST':
             name = request.POST['name']
             email = request.POST['email']
-            comment = request.POST0['comment']
+            comment = request.POST['comment']
+            products = Product.objects.get(id=pk)
 
-            reply = Reply(name=name, email=email, comment=comment,)
+            reply = Reply(product=products, name=name, email=email, comment=comment,)
             reply.save()
+            return redirect('aquarium')
     except Exception as e:
         return HttpResponse('<h1>Error!!! </h1>')
 
     products = Product.objects.filter(id=pk)
-    context = {'products': products, 'items': items, 'order': order, 'bagItemsA': bagItemsA}
+    id = Product.objects.get(id=pk)
+    comments = Reply.objects.filter(product=pk)
+    context = {'products': products, 'items': items, 'order': order, 'bagItemsA': bagItemsA, 'comments': comments}
     return render(request, 'aquarium/aquarium_single.html', context)
 
 

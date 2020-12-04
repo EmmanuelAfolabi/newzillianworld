@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 from .models import Receipt
+from .models import Reply
 
 
 
@@ -21,3 +22,10 @@ class DocumentForm(forms.ModelForm):
     class Meta:
         model = Receipt
         fields = ('uniquecode', 'receipt', )
+
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Reply
+        fields = ('name', 'email', 'comment')

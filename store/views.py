@@ -25,6 +25,7 @@ import datetime
 from .utils import cookieCart, cartData, guestOrder
 from .form import DocumentForm
 from homes.models import Subscriber
+from .form import CommentForm
 
 
 
@@ -48,17 +49,48 @@ def store_single(request, pk):
             name = request.POST['name']
             email = request.POST['email']
             comment = request.POST['comment']
+            products = Product.objects.get(id=pk)
 
-            reply = Reply(name=name, email=email, comment=comment,)
+            reply = Reply(product=products, name=name, email=email, comment=comment,)
             reply.save()
-            return redirect('store_single/<int:pk>/')
+            return redirect('store')
     except Exception as e:
+        print(e)
         return HttpResponse('<h1>Error!!! </h1>')
 
     products = Product.objects.filter(id=pk)
-    comments = Reply.objects.filter(product=1)
-    context = {'products': products, 'items': items, 'order': order, 'cartItems': cartItems, 'comments': comments}
+    id = Product.objects.get(id=pk)
+    comments = Reply.objects.filter(product=pk)
+    context = {'products': products, 'items': items, 'order': order, 'cartItems': cartItems, 'comments': comments, }
     return render(request, 'store/store_single.html', context)
+
+def store_single1(request, pk):
+    template_name = 'store/store_single.html'
+    products = get_object_or_404(Product, id=pk)
+    comments = products.comments.filter(active=True)
+    new_comment = None
+    
+    # Comment posted
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+
+            # Create Comment object but don't save to database yet
+            new_comment = comment_form.save(commit=False)
+            # Assign the current post to the comment
+            new_comment.products = products
+            # Save the comment to the database
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
+    return render(request, template_name, {'products': products,
+                                           'comments': comments,
+                                           'new_comment': new_comment,
+                                           'comment_form': comment_form,
+                                           'items': items, 'order': order, 
+                                           'cartItems': cartItems,})
+
 
 def cart(request):
     data = cartData(request)
