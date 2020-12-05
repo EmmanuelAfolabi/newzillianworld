@@ -168,13 +168,11 @@
                   <img src="{{product.image1URL}}" class="img-fluid" alt="">
                   
                   <ul class="location-top">
-                    <li class="open-1" style="background-color: #16df7e;">{{product.availability}}</li>
+                    <li class="open-1" style="background-color: #16df7e;" id="availability">{{product.availability}}</li>
                   </ul>
                   <div class="info-bg" style="align-items: center;">
                     <h5><a href="store_single/{{product.id}}">{{product.name}}</a> <span style="float: right; font-size: larger;">
-                      <a><i data-product="{{product.id}}" data-action="add" 
-                        style=" padding-left:10px;" class="fa fa-shopping-cart update-cart"></i></span></h5></a>
-
+                      <button id="addToCart" class="fa fa-shopping-cart aquarium-update-bag" data-product="{{product.id}}" data-action="add" style="background-color: white; border:none;"></button></span></h5>
                     <p>₦{{product.price}}</p>
                   </div>
                 </div>
@@ -227,9 +225,9 @@
         </div>
       
         <div class="social-links">
-          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="https://mobile.twitter.com/thezillianworld" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="https://instagram.com/thezillianworld" class="instagram"><i class="bx bxl-instagram"></i></a>
           <a href="https://wa.me/+2348154147595" class="google-plus"><i class="bx bxl-whatsapp"></i></a>
         </div>
 
@@ -257,6 +255,14 @@
   <!-- Template Main JS File -->
   <script src="{% static 'js/main.js' %}"></script>
   <script src="{% static 'js/cart.js' %}"></script>
+  <script>
+    if (document.getElementById('availability').textContent = 'Sold out'){
+        document.getElementById('addToCart').disabled = true
+    }
+    else(
+      document.getElementById('addToCart').disabled = false
+    )
+  </script>
 
 
   <script type="text/javascript">

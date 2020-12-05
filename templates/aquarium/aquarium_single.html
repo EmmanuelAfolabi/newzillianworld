@@ -111,7 +111,8 @@
 				  <div class="col-lg-4 listing_price_col clearfix">
 					  <div class="featured_card_box d-flex flex-row align-items-center trans_300 float-lg-right"  style="border-radius:20px;">
 						  <div class="featured_card_box_content">
-							  <div class="featured_card_price trans_300">₦{{object.price}}</div>
+							<h6 style="color: white; padding-top:20px;" id="availability">{{object.availability}}</h6>
+							<div class="featured_card_price trans_300">₦{{object.price}}</div>>
 						  </div>
 					  </div>
 				  </div>
@@ -128,9 +129,8 @@
 						  <div class="listing_subtitle">Description</div>
 						  <p class="listing_details_text">{{object.description}}</p>
 						  <div style="margin-top: 30px;">
-							  <a href="#"><i data-product="{{object.id}}" data-action="add"
-								  style=" padding-right:10px; font-size:larger; color: rgba(27, 31, 63, 0.945);"
-								  class="fa fa-shopping-cart update-cart">Add to cart</i></a>
+							<button id="addToCart" class="fa fa-shopping-cart aquarium-update-bag" data-product="{{product.id}}" data-action="add" 
+							style="background-color: white; border:none; color: rgba(27, 31, 63, 0.945);">Add to cart</button>
 						  </div>
 					  </div>
   
@@ -213,9 +213,9 @@
 			  </div>
 
 			  <div class="social-links">
-				<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+				<a href="https://mobile.twitter.com/thezillianworld" class="twitter"><i class="bx bxl-twitter"></i></a>
 				<a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-				<a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+				<a href="https://instagram.com/thezillianworld" class="instagram"><i class="bx bxl-instagram"></i></a>
 				<a href="https://wa.me/+2348154147595" class="google-plus"><i class="bx bxl-whatsapp"></i></a>
 			  </div>
 
@@ -254,6 +254,14 @@
 <!-- Template Main JS File -->
 <script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'js/aquarium_cart.js' %}"></script>
+<script>
+    if (document.getElementById('availability').textContent = 'Sold out'){
+        document.getElementById('addToCart').disabled = true
+    }
+    else(
+      document.getElementById('addToCart').disabled = false
+    )
+  </script>
 
 
   <script type="text/javascript">

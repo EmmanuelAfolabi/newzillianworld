@@ -8,7 +8,8 @@ def index(request):
 
 def homes(request):
     homes = Upload.objects.all()
-    return render(request, 'homes/homes.html', {'homes':homes})
+    title = 'Zillian Homes'
+    return render(request, 'homes/homes.html', {'homes':homes, 'title': title})
 
 def contact_us(request):
     return render(request, 'contact.html')
@@ -28,12 +29,16 @@ def search(request):
             category = request.GET.get('category')
             bedroom = request.GET.get('bedrooms')
             min_price = request.GET.get('min_price')
+            min = min_price.replace(',', '')
             max_price = request.GET.get('max_price')
-            search = Upload.objects.filter(bedrooms__icontains=bedroom, type__icontains=type,
-                                        category__icontains=category, price__range=(min_price, max_price))
+            max = max_price.replace(',', '')
+            homes = Upload.objects.filter(bedrooms__icontains=bedroom, type__icontains=type,
+                                        category__icontains=category, price__range=(min, max))
+            title = 'Search Properties'
     except Exception as e:
+        print(e)
         return HttpResponse('<h1>Error!!! please input correct search options</h1>')
-    return render(request, 'homes/search.html', {'search': search})
+    return render(request, 'homes/homes.html', {'homes': homes, 'title': title})
 
 def subscriber(request):
     if request.method == 'POST':    

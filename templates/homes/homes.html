@@ -164,38 +164,38 @@
 
                               <select name="min_price" id="sel5">
                                 <option>Min Price</option>
-                                <option>250000</option>
-                                <option>500000</option>
-                                <option>750000</option>
-                                <option>1000000</option>
-                                <option>2000000</option>
-                                <option>5000000</option>
-                                <option>10000000</option>
-                                <option>20000000</option>
-                                <option>30000000</option>
-                                <option>40000000</option>
-                                <option>60000000</option>
+                                <option>250,000</option>
+                                <option>500,000</option>
+                                <option>750,000</option>
+                                <option>1,000,000</option>
+                                <option>2,000,000</option>
+                                <option>5,000,000</option>
+                                <option>10,000,000</option>
+                                <option>20,000,000</option>
+                                <option>30,000,000</option>
+                                <option>40,000,000</option>
+                                <option>60,000,000</option>
                               </select>
 
                               <select name="max_price" id="sel6">
                                 <option>Max Price</option>
-                                <option>600000000</option>
-                                <option>700000000 </option>
-                                <option>800000000</option>
-                                <option>900000000</option>
-                                <option>100000000000</option>
-                                <option>200000000000</option>
-                                <option>500000000000</option>
-                                <option>1000000000000</option>
-                                <option>2000000000000</option>
-                                <option>3000000000000</option>
-                                <option>4000000000000</option>
-                                <option>5000000000000</option>
+                                <option>600,000,000</option>
+                                <option>700,000,000 </option>
+                                <option>800,000,000</option>
+                                <option>900,000,000</option>
+                                <option>1,000,000,000</option>
+                                <option>2,000,000,000</option>
+                                <option>5,000,000,000</option>
+                                <option>10,000,000,000</option>
+                                <option>20,000,000,000</option>
+                                <option>30,000,000,000</option>
+                                <option>40,000,000,000</option>
+                                <option>50,000,000,000</option>
                               </select>
 
                             </div>
 
-                            <button type="submit" class="btn">Submit</button>
+                            <button type="submit" id="but" class="btn">Submit</button>
                           </form>
                         </div>
 
@@ -221,13 +221,13 @@
           <div id="grids4-block" class="py-5" style="background-color: white;">
             <div class="container py-md-3" style="background-color: white;">
               <div class=" section-header">
-                <h3 style="color: #5f687b; font-size:larger;" class="">Zillian Homes</h3>
+                <h3 style="color: #5f687b; font-size:larger;" class="">{{title}}</h3>
               </div>
               <div class="row mt-5 pt-3">
 
                         {% for home in homes %}
                 <div class="grids4-info  col-lg-4 col-md-6">
-                  <img src="{{home.image1.url}}" class="img-fluid" alt="">
+                  <img src="{{home.image1URL}}" class="img-fluid" alt="">
                   <ul class="location-top">
                     <li class="rent">{{home.category}}</li>
                     <li class="open-1">{{home.availability}}</li>
@@ -238,7 +238,7 @@
                       <a href="tel:+2348089237933"><i style=" padding-right:10px; font-size:x-large; color:#333" class="fa fa-phone-square"></i></a>
                       <a href="https://wa.me/+2348154147595"><i style=" padding-right:10px;; font-size:x-large; color:#333" class="fa fa-whatsapp"></i></a>
                     </div>
-                    <p>₦{{home.price}}</p>
+                    <p id="price">₦{{home.price}}</p>
                     <ul>
                       <li><span class="fa fa-bed"></span>{{ home.bedrooms}} Bedrooms</li>
                       <li><span class="fa fa-bath"></span> {{home.bathrooms}} Baths</li>
@@ -294,12 +294,11 @@
         </div>
 
         <div class="social-links">
-          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="https://mobile.twitter.com/thezillianworld" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="https://instagram.com/thezillianworld" class="instagram"><i class="bx bxl-instagram"></i></a>
           <a href="https://wa.me/+2348154147595" class="google-plus"><i class="bx bxl-whatsapp"></i></a>
         </div>
-
       </div>
     </div>
 
@@ -323,7 +322,6 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'js/main.js' %}"></script>
-
 
 </body>
 

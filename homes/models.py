@@ -51,6 +51,21 @@ BEDROOM_CHOICES = {
 }
 
 
+IMAGES_CHOICES = {
+    ('0', '0'),
+    ('1', '1'),
+    ('2', '2'),
+    ('3', '3'),
+    ('4', '4'),
+    ('5', '5'),
+    ('6', '6'),
+    ('7', '7'),
+    ('8', '8'),
+    ('9', '9'),
+    ('10', '10'),
+}
+
+
 class Upload(models.Model):
     title = models.CharField(max_length=100)
     availability = models.CharField(choices=availability, null=False, max_length=30)
@@ -60,7 +75,7 @@ class Upload(models.Model):
     locality = models.CharField(max_length=30, blank=True)
     street = models.CharField(max_length=30)
     description = models.TextField(max_length=5000)
-    price = models.CharField(max_length=100)
+    price = models.PositiveIntegerField(max_length=100)
     bedrooms = models.CharField(choices=BEDROOM_CHOICES, null=False, max_length=300, blank=True)
     toilets = models.CharField(choices=BEDROOM_CHOICES, null=False, max_length=30, blank=True)
     bathrooms = models.CharField(choices=BEDROOM_CHOICES, null=False, max_length=30, blank=True)
@@ -68,13 +83,100 @@ class Upload(models.Model):
     toiletArea = models.CharField(max_length=300, blank=True)
     coveredArea = models.CharField(max_length=300, blank=True)
     videoLink = models.CharField(max_length=3000)
+    numberOfImages = models.CharField(choices=IMAGES_CHOICES, max_length=2, null=True)
     image1 = models.FileField(upload_to='media/', null=True)
     image2 = models.FileField(upload_to='media/', null=True)
     image3 = models.FileField(upload_to='media/', null=True)
     image4 = models.FileField(upload_to='media/', null=True, blank=True)
+    image5 = models.FileField(upload_to='media/', null=True, blank=True)
+    image6 = models.FileField(upload_to='media/', null=True, blank=True)
+    image7 = models.FileField(upload_to='media/', null=True, blank=True)
+    image8 = models.FileField(upload_to='media/', null=True, blank=True)
+    image9 = models.FileField(upload_to='media/', null=True, blank=True)
+    image10 = models.FileField(upload_to='media/', null=True, blank=True)
 
     def __str__(self):
         return str(self.title)
+
+    @property
+    def image1URL(self):
+        try:
+            url = self.image1.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def image2URL(self):
+        try:
+            url = self.image2.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def image3URL(self):
+        try:
+            url = self.image3.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def image4URL(self):
+        try:
+            url = self.image4.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def image5URL(self):
+        try:
+            url = self.image5.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def image6URL(self):
+        try:
+            url = self.image6.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def image7URL(self):
+        try:
+            url = self.image3.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def image8URL(self):
+        try:
+            url = self.image4.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def image9URL(self):
+        try:
+            url = self.image5.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def image10URL(self):
+        try:
+            url = self.image6.url
+        except:
+            url = ''
+        return url
 
 class Testimonials(models.Model):
     message = models.TextField(max_length=5000)
