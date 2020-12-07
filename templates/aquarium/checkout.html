@@ -180,32 +180,25 @@
                                     <span class="top__text">Product</span>
                                     <span class="top__text__right">Total</span>
                                 </li>
-                                {% for item in items %}
+                                {% for item in items %}{% load humanize %}
                                 <li>{{item.quantity}} {{item.product.name}}
-                                    <span>₦{{item.get_total|floatformat:2}}</span></li>
+                                    <span>₦{{item.get_total|intcomma}}</span></li>
                                 {% endfor %}
 
                             </ul>
                         </div>
                         <div class="checkout__order__total">
                             <ul>
-                                <li>Subtotal <span style="color: #16df7e;">₦
-                                        {{order.get_bag_total|floatformat:2}}</span></li>
-                                <li>Total <span style="color: #16df7e;">₦ {{order.get_bag_total|floatformat:2}}</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="checkout__order__total">
-                            <ul>
-                              <li>Subtotal <span style="color: #16df7e;">₦ {{order.get_cart_total}}</span></li>
-                              <li><input id="pick" name="delivery" type="radio" onclick="Yourself()" checked> <label for="pick" style="font-size: small;"> Pickup yourself </label> <span style="float: right; color: #16df7e;">₦ 0</span> </li>
-
-                              <li><input id="within" name="delivery" type="radio" onclick="DeliveryWithin()"> <label for="within" style="font-size: small;"> Delivery within Lagos </label> <span style="float: right; color: #16df7e;">₦ 1000</span> </li>
-                              <li><input id="outside" name="delivery" type="radio" onclick="DeliveryWithout()"> <label for="outside" style="font-size: small;"> Delivery outside Lagos</label> <span style="float: right; color: #16df7e;">₦ 2000</span> </li>
+                              <li>Subtotal <span style="color: #16df7e;">₦{{order.get_bag_total|intcomma}}</span></li>
+                              <li><input id="pick" name="delivery" type="radio" onclick="Yourself()" checked> <label for="pick" style="font-size: small;"> Pickup yourself </label> <span style="float: right; color: #16df7e;">₦0</span> </li>
             
-                              <li>Total <span style="color: #16df7e; float:right" id="totalId">{{order.get_cart_total}}</span> <span style="color: #16df7e; float:right;">₦&nbsp;</span> </li>
+                              <li><input id="within" name="delivery" type="radio" onclick="DeliveryWithin()"> <label for="within" style="font-size: small;"> Delivery within Lagos </label> <span style="float: right; color: #16df7e;">₦1,000</span> </li>
+                              <li><input id="outside" name="delivery" type="radio" onclick="DeliveryWithout()"> <label for="outside" style="font-size: small;"> Delivery outside Lagos</label> <span style="float: right; color: #16df7e;">₦2,000</span> </li>
+            
+                              <li>Total <span style="color: #16df7e; float:right" id="totalId">{{order.get_bag_total|intcomma}}</span> <span style="color: #16df7e; float:right;">₦</span> </li>
                             </ul>
                           </div>
+                        
                         <button style="background-color: #16df7e;" class="site-btn"><a href="https://justpaga.me/thezillianworld" id="pay"  target="_blank" style="color: white;">Make payment</a></button>
                           <h5 style="font-size: small; font-weight:50; margin-top:5px;"><span>Note:</span> Put your unique code in the comment section</h5>
                           <!--div class="checkout__form__input" id="container1" style="visibility: hidden; margin-left:80px;">
@@ -298,7 +291,7 @@
         function Yourself(){
             console.log('Radio clicked');
             number = 0.00;
-            var tot = {{order.get_cart_total|floatformat:2}} + number
+            var tot = {{order.get_bag_total}} + number
             tot = tot.toString()
             console.log(tot)
             var totalId = document.getElementById('totalId').textContent = tot;
@@ -309,7 +302,7 @@
         function DeliveryWithin(){
           console.log('Radio clicked');
           number = 1000.00;
-          var tot = {{order.get_cart_total|floatformat:2}} + number
+          var tot = {{order.get_bag_total}} + number
           tot = tot.toString()
           console.log(tot)
           var totalId = document.getElementById('totalId').textContent = tot;
@@ -320,7 +313,7 @@
         function DeliveryWithout(){
           console.log('Radio ');
           number = 2000.00;
-          var tot = {{order.get_cart_total|floatformat:2}} + number
+          var tot = {{order.get_bag_total}} + number
           tot = tot.toString()
           console.log(tot);
           var totalId = document.getElementById('totalId').textContent = tot;

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'aquarium',
     'store',
     'import_export',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

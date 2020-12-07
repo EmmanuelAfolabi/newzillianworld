@@ -34,9 +34,10 @@ from homes.models import Subscriber
 def aquarium(request):
     data = bagData(request)
     bagItemsA = data['bagItemsA']
+    title = 'ZILLIAN AQUARIUM'
 
     products = Product.objects.all()
-    context = {'products': products, 'bagItemsA': bagItemsA}
+    context = {'products': products, 'bagItemsA': bagItemsA, 'title': title}
     return render(request, 'aquarium/aquarium.html', context)
 
 def aquarium_single(request, pk):
@@ -161,12 +162,13 @@ def search(request):
         bagItemsA = data['bagItemsA']
 
         if request.method == 'GET':
+            title = 'Search Products'
             name = request.GET.get('name')
-            search = Product.objects.filter(name__icontains=name,)
+            products = Product.objects.filter(name__icontains=name,)
     except Exception as e:
         return HttpResponse('<h1>Error!!! please input correct search options</h1>')
-    context = {'bagItemsA': bagItemsA, 'search': search}
-    return render(request, 'aquarium/search.html', context)
+    context = {'bagItemsA': bagItemsA, 'products': products, 'title': title}
+    return render(request, 'aquarium/aquarium.html', context)
 
 def subscriber(request):
     if request.method == 'POST':    

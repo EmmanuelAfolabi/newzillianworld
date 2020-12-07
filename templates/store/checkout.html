@@ -180,21 +180,21 @@
                     <span class="top__text">Product</span>
                     <span class="top__text__right">Total</span>
                   </li>
-                  {% for item in items %}
-                  <li>{{item.quantity}} {{item.product.name}} <span>₦{{item.get_total}}</span></li>
+                  {% for item in items %}{% load humanize %}
+                  <li>{{item.quantity}} {{item.product.name}} <span>₦{{item.get_total|intcomma}}</span></li>
                   {% endfor %}
 
                 </ul>
               </div>
               <div class="checkout__order__total">
                 <ul>
-                  <li>Subtotal <span style="color: #16df7e;">₦ {{order.get_cart_total}}</span></li>
-                  <li><input id="pick" name="delivery" type="radio" onclick="Yourself()" checked> <label for="pick" style="font-size: small;"> Pickup yourself </label> <span style="float: right; color: #16df7e;">₦ 0</span> </li>
+                  <li>Subtotal <span style="color: #16df7e;">₦ {{order.get_cart_total|intcomma}}</span></li>
+                  <li><input id="pick" name="delivery" type="radio" onclick="Yourself()" checked> <label for="pick" style="font-size: small;"> Pickup yourself </label> <span style="float: right; color: #16df7e;">₦0</span> </li>
 
-                  <li><input id="within" name="delivery" type="radio" onclick="DeliveryWithin()"> <label for="within" style="font-size: small;"> Delivery within Lagos </label> <span style="float: right; color: #16df7e;">₦ 1000</span> </li>
-                  <li><input id="outside" name="delivery" type="radio" onclick="DeliveryWithout()"> <label for="outside" style="font-size: small;"> Delivery outside Lagos</label> <span style="float: right; color: #16df7e;">₦ 2000</span> </li>
+                  <li><input id="within" name="delivery" type="radio" onclick="DeliveryWithin()"> <label for="within" style="font-size: small;"> Delivery within Lagos </label> <span style="float: right; color: #16df7e;">₦,1000</span> </li>
+                  <li><input id="outside" name="delivery" type="radio" onclick="DeliveryWithout()"> <label for="outside" style="font-size: small;"> Delivery outside Lagos</label> <span style="float: right; color: #16df7e;">₦,2000</span> </li>
 
-                  <li>Total <span style="color: #16df7e; float:right" id="totalId">{{order.get_cart_total}}</span> <span style="color: #16df7e; float:right;">₦&nbsp;</span> </li>
+                  <li>Total <span style="color: #16df7e; float:right" id="totalId">{{order.get_cart_total|intcomma}}</span> <span style="color: #16df7e; float:right;">₦&nbsp;</span> </li>
                 </ul>
               </div>
               <button style="background-color: #16df7e;" class="site-btn"><a href="https://justpaga.me/thezillianworld"  id="pay" target="_blank" style="color: white;">Make payment</a></button>

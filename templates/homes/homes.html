@@ -237,8 +237,8 @@
                       <div style="float: right;">
                       <a href="tel:+2348089237933"><i style=" padding-right:10px; font-size:x-large; color:#333" class="fa fa-phone-square"></i></a>
                       <a href="https://wa.me/+2348154147595"><i style=" padding-right:10px;; font-size:x-large; color:#333" class="fa fa-whatsapp"></i></a>
-                    </div>
-                    <p id="price">₦{{home.price}}</p>
+                    </div>{% load humanize %}
+                    <p>₦<span id="price">{{home.price|intcomma}}</span></p>
                     <ul>
                       <li><span class="fa fa-bed"></span>{{ home.bedrooms}} Bedrooms</li>
                       <li><span class="fa fa-bath"></span> {{home.bathrooms}} Baths</li>
@@ -322,6 +322,7 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'js/main.js' %}"></script>
+
 
 </body>
 

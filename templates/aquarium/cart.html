@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load humanize %}
 <html lang="en">
 <head>
 <title>Shopping cart - Aquarium</title>
@@ -128,7 +129,7 @@
                                         <h6>{{cart.product.name}}</h6>
                                     </div>
                                 </td>
-                                <td class="cart__price" style="color: #16df7e;">&nbsp;₦ {{cart.product.price|floatformat:2}}</td>
+                                <td class="cart__price" style="color: #16df7e;">&nbsp;₦{{cart.product.price|intcomma}}</td>
                                 <!--td class="cart__quantity">
                                     <div class="pro-qty">
                                         <input type="text" value="{{item.quantity}}">
@@ -137,20 +138,15 @@
                                 <td class="cart__quantity">
                                     <div class="wrap-num-product flex-w m-l-auto m-r-0">
                                         <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <i data-product="{{cart.product.id}}" data-action="add" class="fa fa-plus aquarium-update-bag"></i>
+                                            <i style="padding-left:40px;" data-product="{{cart.product.id}}" data-action="add" class="fa fa-plus aquarium-update-bag"></i>
                                         </div>
-
-                                                    <h6 id="qty">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{cart.quantity}}</h6>
-
-
+                                              <h6 id="qty" style="padding-left:42px;"> {{cart.quantity}}</h6>
                                         <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <i data-product="{{cart.product.id}}" data-action="remove" class="fa fa-minus aquarium-update-bag"></i>
+                                            <i style="padding-left:40px;" data-product="{{cart.product.id}}" data-action="remove" class="fa fa-minus aquarium-update-bag"></i>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="cart__total" style="color: #16df7e;">₦ {{cart.get_total|floatformat:2}}</td>
+                                <td class="cart__total" style="color: #16df7e;">₦{{cart.get_total|intcomma}}</td>
                                 <!--td class="cart__close"><span class="icon_close"></span></td-->
                             </tr>
                             {% endfor %}
@@ -176,8 +172,8 @@
             <div class="col-lg-4 offset-lg-2">
                 <div class="cart__total__procced">
                     <h6>Cart total</h6>
-                    <ul>
-                        <li>Subtotal <span style="color: #16df7e;">₦ {{order.get_bag_total|floatformat:2}}</span></li>
+                    <ul>{% load humanize %}
+                        <li>Subtotal <span style="color: #16df7e;">₦{{order.get_bag_total|intcomma}}</span></li>
                         <!--li>Total <span>$ 750.0</span></li-->
                     </ul>
                     <a href="{% url 'aquarium_checkout' %}" class="primary-btn" style="background-color: #16df7e;">Proceed to checkout</a>

@@ -160,7 +160,7 @@
           <div id="grids4-block" class="py-5" style="background-color: white;">
             <div class="container py-md-3" style="background-color: white;">
               <div class=" section-header">
-                <h3 style="color: #5f687b; font-size:larger;" class="">Zillian Aquarium</h3>
+                <h3 style="color: #5f687b; font-size:larger;" class="">{{title}}</h3>
               </div>
               <div class="row mt-5 pt-3">
                 {% for product in products reversed%}
@@ -172,8 +172,9 @@
                   </ul>
                   <div class="info-bg" style="align-items: center;">
                     <h5><a href="aquarium_single/{{product.id}}">{{product.name}}</a> <span style="float: right; font-size: larger;">
-                      <button id="addToCart" class="fa fa-shopping-cart aquarium-update-bag" data-product="{{product.id}}" data-action="add" style="background-color: white; border:none;"></button></span></h5>
-                    <p>₦{{product.price}}</p>
+                      <button id="addToCart" class="fa fa-shopping-cart aquarium-update-bag" data-product="{{product.id}}" 
+                      data-action="add" style="background-color: white; border:none;"></button></span></h5>{% load humanize %}
+                    <p>₦{{product.price|intcomma}}</p>
                   </div>
                 </div>
                 {% endfor %}

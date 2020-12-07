@@ -144,8 +144,8 @@
 				<div class="col-lg-4 listing_price_col clearfix">
 					<div class="featured_card_box d-flex flex-row align-items-center trans_300 float-lg-right"  style="border-radius:20px;">
 						<div class="featured_card_box_content">
-							<div class="featured_card_price_title trans_300">{{object.category}}</div>
-							<div class="featured_card_price trans_300">₦{{object.price}}</div>
+							<div class="featured_card_price_title trans_300">{{object.category}}</div>{% load humanize %}
+							<div class="featured_card_price trans_300">₦{{object.price|intcomma}}</div>
 						</div>
 					</div>
 				</div>
