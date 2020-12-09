@@ -4,7 +4,7 @@ from . models import *
 def index(request):
     testtimonials = Testimonials.objects.all()
     context = {'testimonials': testtimonials}
-    return render(request, 'index.html')
+    return render(request, 'index.html', context)
 
 def homes(request):
     homes = Upload.objects.all()
@@ -41,7 +41,7 @@ def search(request):
     return render(request, 'homes/homes.html', {'homes': homes, 'title': title})
 
 def subscriber(request):
-    if request.method == 'POST':    
+    if request.method == 'POST':
         email = request.POST.get('email', False)
         subscriber = Subscriber(email=email)
         subscriber.save()

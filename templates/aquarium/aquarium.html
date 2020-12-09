@@ -1,5 +1,6 @@
-{% load static %}
 <!doctype html>
+{% load humanize %}
+{% load static %}
 <html lang="en">
 
 <head>
@@ -46,9 +47,9 @@
     font-weight: 700;
     position: relative;
     padding-bottom: 15px;
-    
+
   }
-  
+
   .form-header h3 {
     font-size: 32px;
     color: rgb(17, 17, 17);
@@ -57,7 +58,7 @@
     position: relative;
     padding-bottom: 15px;
   }
-  
+
   .section-header h3::before {
     content: '';
     position: absolute;
@@ -68,7 +69,7 @@
     bottom: 1px;
     left: calc(50% - 60px);
   }
-  
+
   .section-header h3::after {
     content: '';
     position: absolute;
@@ -79,7 +80,7 @@
     bottom: 0;
     left: calc(50% - 20px);
   }
-  
+
   .section-header p {
     text-align: center;
     padding-bottom: 30px;
@@ -166,14 +167,20 @@
                 {% for product in products reversed%}
                 <div class="grids4-info  col-lg-4 col-md-6 product__item">
                   <img src="{{product.image1URL}}" class="img-fluid" alt="">
-                  
+
                   <ul class="location-top">
                     <li class="open-1" style="background-color: #16df7e;" id="availability">{{product.availability}}</li>
                   </ul>
                   <div class="info-bg" style="align-items: center;">
                     <h5><a href="aquarium_single/{{product.id}}">{{product.name}}</a> <span style="float: right; font-size: larger;">
-                      <button id="addToCart" class="fa fa-shopping-cart aquarium-update-bag" data-product="{{product.id}}" 
-                      data-action="add" style="background-color: white; border:none;"></button></span></h5>{% load humanize %}
+                        {% if product.availability == 'Available' %}
+                      <button id="addToCart" class="fa fa-shopping-cart aquarium-update-bag" data-product="{{product.id}}"
+                      data-action="add" style="background-color: white; border:none;"></button>
+                        {% else %}
+                        <button id="addToCart" class="fa fa-shopping-cart aquarium-update-bag" data-product="{{product.id}}"
+                      data-action="add" style="background-color: white; border:none;" disabled></button>
+                        {% endif %}
+                      </span></h5>
                     <p>₦{{product.price|intcomma}}</p>
                   </div>
                 </div>
@@ -224,7 +231,7 @@
             </form>
           </div>
           </div>
-      
+
           <div class="social-links">
             <a href="https://mobile.twitter.com/thezillianworld" class="twitter"><i class="bx bxl-twitter"></i></a>
             <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -257,19 +264,11 @@
   <script src="{% static 'js/main.js' %}"></script>
   <script src="{% static 'js/aquarium_cart.js' %}"></script>
 
-  <script>
-    if (document.getElementById('availability').textContent = 'Sold out'){
-        document.getElementById('addToCart').disabled = true
-    }
-    else(
-      document.getElementById('addToCart').disabled = false
-    )
-  </script>
 
 
   <script type="text/javascript">
     var user = '{{request.user}}'
-    
+
     function getCookie(name) {
         var cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -286,8 +285,8 @@
         return cookieValue;
     }
     var csrftoken = getCookie('csrftoken');
-    
-    
+
+
     </script>
     <script type="text/javascript">
     function getCookies(name) {
@@ -307,8 +306,8 @@
         document.cookie = 'bag=' + JSON.stringify(bag) + ";domain=;path=/"
     }
     console.log('bag:', bag)
-    
-    
+
+
     </script>
 </body>
 

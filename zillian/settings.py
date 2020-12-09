@@ -25,7 +25,7 @@ SECRET_KEY = 'zzsx4%os1^-l#ak&_q8n15+)s%juw44a8*6$$m=v1x#c%-$quz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['zillianworld.pythonanywhere.com']
 
 
 # Application definition

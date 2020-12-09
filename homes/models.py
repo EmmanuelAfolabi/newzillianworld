@@ -75,7 +75,7 @@ class Upload(models.Model):
     locality = models.CharField(max_length=30, blank=True)
     street = models.CharField(max_length=30)
     description = models.TextField(max_length=5000)
-    price = models.PositiveIntegerField(max_length=100)
+    price = models.PositiveIntegerField()
     bedrooms = models.CharField(choices=BEDROOM_CHOICES, null=False, max_length=300, blank=True)
     toilets = models.CharField(choices=BEDROOM_CHOICES, null=False, max_length=30, blank=True)
     bathrooms = models.CharField(choices=BEDROOM_CHOICES, null=False, max_length=30, blank=True)

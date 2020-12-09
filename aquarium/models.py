@@ -59,7 +59,7 @@ class Product(models.Model):
     image1 = models.ImageField(null=True, blank=True)
     image2 = models.ImageField(null=True, blank=True)
     image3 = models.ImageField(null=True, blank=True)
-    
+
     #category = models.CharField(choices=CATEGORY_CHOICES, null=False, max_length=30)
     #slug = models.SlugField()
 

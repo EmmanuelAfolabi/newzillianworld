@@ -41,7 +41,7 @@
 <body>
     <header id="header" class="fixed-top">
       <div class="container d-flex align-items-center">
-  
+
         <h1 class="logo mr-auto"><a style="font-size: x-large;" href="{% url 'store' %}">Zillian Store</a> </h1>
         <a href="{% url 'cart' %}">
           <i style="color: #5f687b;" class="fa fa-shopping-cart icon-place cart">
@@ -50,7 +50,7 @@
         </a>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-  
+
         <nav class="nav-menu d-none d-lg-block">
             <ul>
                 <li><a href="/">ZillianWorld</a></li>
@@ -59,15 +59,15 @@
                 <li><a href="{% url 'aquarium' %}">Aquarium</a></li>
               </ul>
         </nav><!-- .nav-menu -->
-  
+
       </div>
     </header>
-  
+
     <section id="intro">
       <div class="intro-container">
         <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
-  
-  
+
+
             <div class="carousel-item active" style="background-image: url({% static 'img/five.jpeg' %}">
               <div class="carousel-container">
                 <div class="container">
@@ -84,7 +84,7 @@
                 </div>
               </div>
             </div>
-  
+
         </div>
       </div>
     </section>
@@ -138,11 +138,11 @@
                                 <td class="cart__quantity">
                                   <div class="wrap-num-product flex-w m-l-auto m-r-0">
                                       <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                          <i style="padding-left:40px;" data-product="{{cart.product.id}}" data-action="add" class="fa fa-plus aquarium-update-bag"></i>
+                                          <i style="padding-left:40px;" data-product="{{cart.product.id}}" data-action="add" class="fa fa-plus update-cart"></i>
                                       </div>
                                             <h6 id="qty" style="padding-left:42px;"> {{cart.quantity}}</h6>
                                       <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                          <i style="padding-left:40px;" data-product="{{cart.product.id}}" data-action="remove" class="fa fa-minus aquarium-update-bag"></i>
+                                          <i style="padding-left:40px;" data-product="{{cart.product.id}}" data-action="remove" class="fa fa-minus update-cart"></i>
                                       </div>
                                   </div>
                               </td>
@@ -150,7 +150,7 @@
                                 <!--td class="cart__close"><span class="icon_close"></span></td-->
                             </tr>
                             {% endfor %}
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -205,7 +205,7 @@
             </form>
           </div>
         </div>
-      
+
         <div class="social-links">
           <a href="https://mobile.twitter.com/thezillianworld" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -235,7 +235,7 @@
   <script src="{% static 'vendor/venobox/venobox.min.js' %}"></script>
   <script src="{% static 'vendor/owl.carousel/owl.carousel.min.js' %}"></script>
 
-  
+
   <script src="{% static 'js/main.js' %}"></script>
   <script src="{% static 'js/cart.js' %}"></script>
   <script type="text/javascript">

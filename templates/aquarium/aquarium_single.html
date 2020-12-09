@@ -72,12 +72,12 @@
 	  {% for object in products %}
 	  <div class="listing">
 		  <div class="container">
-  
+
 			  <div class="row">
 				  <div class="col">
-  
+
 					  <!-- Listing Image Slider -->
-  
+
 					  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 						  <div class="carousel-inner">
 							<div class="carousel-item active">
@@ -94,19 +94,19 @@
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 							<span class="sr-only">Previous</span>
 						  </a>
-  
+
 						  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
 							<span class="carousel-control-next-icon" aria-hidden="true"></span>
 							<span class="sr-only">Next</span>
 						  </a>
 						</div>
-  
+
 				  </div>
 			  </div>
-  
+
 			  <div class="row">
-  
-  
+
+
 				  <!-- Listing Price -->
 				  <div class="col-lg-4 listing_price_col clearfix">
 					  <div class="featured_card_box d-flex flex-row align-items-center trans_300 float-lg-right"  style="border-radius:20px;">
@@ -116,27 +116,33 @@
 						  </div>
 					  </div>
 				  </div>
-  
+
 			  </div>
-  
+
 			  <div class="row listing_content_row">
-  
+
 				  <!-- Listing -->
-  
+
 				  <div class="col-lg-8 listing_col">
-  
+
 					  <div class="listing_details">
 						  <div class="listing_subtitle">Description</div>
 						  <p class="listing_details_text">{{object.description}}</p>
 						  <div style="margin-top: 30px;">
-							<button id="addToCart" class="fa fa-shopping-cart aquarium-update-bag" data-product="{{product.id}}" data-action="add" 
-							style="background-color: white; border:none; color: rgba(27, 31, 63, 0.945);">Add to cart</button>
+
+						  	{% if object.availability == 'Available' %}
+                      <button id="addToCart" class="fa fa-shopping-cart aquarium-update-bag" data-product="{{object.id}}"
+                      data-action="add" style="background-color: white; border:none;">Add to cart</button>
+                      {% else %}
+                      <button id="addToCart" class="fa fa-shopping-cart aquarium-update-bag" data-product="{{object.id}}"
+                      data-action="add" style="background-color: white; border:none;" disabled>Add to cart</button>
+                      {% endif %}
 						  </div>
 					  </div>
-  
-  
+
+
 				  </div>
-  
+
 			  </div>
 		  </div>
 	  </div>
@@ -144,22 +150,22 @@
   </div>
   <section class="blog">
 	  <div class="col-lg-8 entries" style="padding: 0px;">
-  
+
 		  <div class="blog-comments" style="padding: 0px;">
-  
+
 			<h4 style="font-size: large; padding-left:10px;" class="comments-count">{{comments.count}} Comments</h4>
 			{% for comment in comments %}
-  
+
 			<div id="comment-4" class="comment clearfix">
 			  <img src="assets/img/comments-6.jpg" class="comment-img  float-left" alt="">
 			  <h5>{{comment.name}} </h5>
 			  <time datetime="2020-01-01" style="color: #16df7e">{{comment.date}}</time>
 			  <p>{{comment.comment}}</p>
-  
+
 			</div><!-- End comment #4 -->
 			{% endfor %}
-  
-  
+
+
 			<div class="reply-form">
 			  <h4>Leave a Reply</h4>
 			  <p>Your email address will not be published. Required fields are marked * </p>
@@ -179,13 +185,13 @@
 				  </div>
 				</div>
 				<button type="submit" class="btn btn-primary" style="background-color: #16df7e">Post Comment</button>
-  
+
 			  </form>
-  
+
 			</div>
-  
+
 		  </div><!-- End blog comments -->
-  
+
 		</div><!-- End blog entries list -->
   </section>
 	<!-- Newsletter -->
@@ -254,14 +260,7 @@
 <!-- Template Main JS File -->
 <script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'js/aquarium_cart.js' %}"></script>
-<script>
-    if (document.getElementById('availability').textContent = 'Sold out'){
-        document.getElementById('addToCart').disabled = true
-    }
-    else(
-      document.getElementById('addToCart').disabled = false
-    )
-  </script>
+
 
 
   <script type="text/javascript">
