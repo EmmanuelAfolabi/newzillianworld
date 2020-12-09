@@ -161,7 +161,7 @@
                                   <div class="checkout__form__input">
                                     <input name="subtotal" id="subtotal" type="hidden" value="{{order.get_cart_total}}">
                                   </div>
-                  
+
                                   <div class="checkout__form__input">
                                     <input name="total" id="total" type="hidden" value="">
                                   </div>
@@ -191,14 +191,14 @@
                             <ul>
                               <li>Subtotal <span style="color: #16df7e;">₦{{order.get_bag_total|intcomma}}</span></li>
                               <li><input id="pick" name="delivery" type="radio" onclick="Yourself()" checked> <label for="pick" style="font-size: small;"> Pickup yourself </label> <span style="float: right; color: #16df7e;">₦0</span> </li>
-            
+
                               <li><input id="within" name="delivery" type="radio" onclick="DeliveryWithin()"> <label for="within" style="font-size: small;"> Delivery within Lagos </label> <span style="float: right; color: #16df7e;">₦1,000</span> </li>
                               <li><input id="outside" name="delivery" type="radio" onclick="DeliveryWithout()"> <label for="outside" style="font-size: small;"> Delivery outside Lagos</label> <span style="float: right; color: #16df7e;">₦2,000</span> </li>
-            
+
                               <li>Total <span style="color: #16df7e; float:right" id="totalId">{{order.get_bag_total|intcomma}}</span> <span style="color: #16df7e; float:right;">₦</span> </li>
                             </ul>
                           </div>
-                        
+
                         <button style="background-color: #16df7e;" class="site-btn"><a href="https://justpaga.me/thezillianworld" id="pay"  target="_blank" style="color: white;">Make payment</a></button>
                           <h5 style="font-size: small; font-weight:50; margin-top:5px;"><span>Note:</span> Put your unique code in the comment section</h5>
                           <!--div class="checkout__form__input" id="container1" style="visibility: hidden; margin-left:80px;">
@@ -255,13 +255,13 @@
                       </form>
                     </div>
                   </div>
-          
+
                   <div class="social-links">
-                    <a href="https://mobile.twitter.com/thezillianworld" class="twitter"><i class="bx bxl-twitter"></i></a>
-                    <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                    <a href="https://instagram.com/thezillianworld" class="instagram"><i class="bx bxl-instagram"></i></a>
-                    <a href="https://wa.me/+2348154147595" class="google-plus"><i class="bx bxl-whatsapp"></i></a>
-                  </div>
+            <a href="https://mobile.twitter.com/thezillianworld" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="https://facebook.com/thezillianworld" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="https://instagram.com/thezillianworld" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="https://wa.me/+2348154147595" class="google-plus"><i class="bx bxl-whatsapp"></i></a>
+          </div>
 
             </div>
         </div>
@@ -296,7 +296,7 @@
             console.log(tot)
             var totalId = document.getElementById('totalId').textContent = tot;
             document.getElementById('total').value = tot;
-            
+
           };
 
         function DeliveryWithin(){
@@ -307,9 +307,9 @@
           console.log(tot)
           var totalId = document.getElementById('totalId').textContent = tot;
           document.getElementById('total').value = tot;
-          
+
         };
-    
+
         function DeliveryWithout(){
           console.log('Radio ');
           number = 2000.00;
@@ -318,9 +318,9 @@
           console.log(tot);
           var totalId = document.getElementById('totalId').textContent = tot;
           document.getElementById('total').value = tot;
-          
+
         }
-        
+
       </script>
     <script>
     document.getElementById('pay').addEventListener('click', function () {
